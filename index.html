@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="Worc-símbolo-oficial.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Agendar uma Conversa</title>
+
+  </head>
+  <body>
+  
+
+  <div class="content" style="background-color: #D2B4DE">
+    
+    <div class="container">
+      <div class="row align-items-stretch justify-content-center no-gutters">
+        <div class="col-md-9">
+          <div class="form h-100 contact-wrap p-5">
+            <div class="text-center">
+              <img src="Worc-logotipo-oficial-vertical.png" style="width: 25%; margin-bottom: 30px; margin-top: -10px;">
+              <h3>Quer contratar sua equipe Oakberry com a Worc?</h3>
+            <p style="margin-bottom: 50px;">Insira seus dados abaixo que nossa equipe comercial entrará em contato com o seu estabelecimento em até 24h! 😁</p>
+            </div>
+            
+            <form class="mb-5 box" method="post" id="contactForm" name="contactForm">
+              <div class="row">
+
+                <input id="date" name="prop_date" style="display:none">
+
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="" class="col-form-label">Nome*</label>
+                  <input type="text" class="form-control" onkeyup="success()" name="nome" id="nome">
+                </div>
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="" class="col-form-label">Telefone*</label>
+                  <input type="text" class="form-control" onkeyup="success()" name="telefone" id="telefone">
+                </div>
+
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="" class="col-form-label">Email*</label>
+                  <input type="email" class="form-control" onkeyup="success()" name="email" id="email">
+                </div>
+
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="" class="col-form-label">Localização da Unidade*</label>
+                  <input type="text" class="form-control" onkeyup="success()" name="localizacao" id="localizacao">
+                </div>
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="" class="col-form-label">Como prefere o contato?*</label>
+                  <select name="abordagem" class="form-control" id="abordagem">
+                      <option value=""></option>
+                      <option value="WhatsApp">WhatsApp</option>
+                      <option value="Ligação">Ligação</option>
+                      <option value="Email">Email</option>
+                  </select>                
+                </div>
+              </div>
+
+              
+              <div class="row justify-content-center" style="margin-top: 40px">
+                <div class="col-md-5 form-group text-center">
+                  <button id="button" type="submit" class="btn btn-block btn-primary rounded-0 py-2 px-4" disabled onclick="showHtmlDiv();">Enviar</button>
+                  
+                </div>
+              </div>
+            </form>
+
+            <div class="text-center" id="output" style="display: none">
+              <img id="img1" src="check-circle.gif" style="margin-bottom: 20px">
+              <p>Sua mensagem foi enviada com sucesso e em breve nossa equipe comercial irá entrar em contato para agendar um bate papo!</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+    $("#contactForm").submit(function(e) {
+    e.preventDefault();
+});
+  </script>
+
+  <script type="text/javascript">
+    function showHtmlDiv() {
+  var htmlShow = document.getElementById("output");
+  var dope = document.getElementById("contactForm");
+  if (htmlShow.style.display === "none") {
+    htmlShow.style.display = "block";
+    dope.style.display = "none";
+  } else {
+    htmlShow.style.display = "none";
+  }
+}
+  </script>
+
+  
+
+
+   <script type="text/javascript">
+      setTimeout(function() {
+    setInterval(function() {
+        $('#img1').attr('src',$('#img1').attr('src'))
+    },1)
+}, 1000)
+    </script>
+    
+
+    <script type="text/javascript">
+      function success() {
+   if(document.getElementById("nome").value==="" || document.getElementById("email").value==="" || document.getElementById("telefone").value==="" || document.getElementById("localizacao").value==="") { 
+            document.getElementById('button').disabled = true; 
+        } else { 
+            document.getElementById('button').disabled = false;
+        }
+    }
+    </script>
+
+    <script type="text/javascript">
+      
+    </script>
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbz9yDAy_Y7HkH9ky20f2KqhNqMdwJkUwiGLN8SacFtoxJO7Y5T0yvkcQoR-PtOCUSH4bw/exec'
+  const form = document.forms['contactForm']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+<script type="text/javascript">
+  document.getElementById('date').value = Date();
+</script>
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
